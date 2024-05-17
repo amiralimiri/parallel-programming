@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "gpuerrors.h"
+#include "../utils/gpuerrors.h"
 
 //-----------------------------------------------------------------------------
 void fill(float* data, int size) {

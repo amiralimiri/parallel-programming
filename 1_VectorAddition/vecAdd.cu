@@ -41,7 +41,7 @@ void vecAdd_cpu(float* A_h, float* B_h, float* C_h, int n) {
 // Compute vector sum C = A + B 
 // Each thread performs one pair-wise addition 
 __global__ 
-void vecAddKernel(float* A, float* B, float* C, int n) { 
+void vecAdd_Kernel(float* A, float* B, float* C, int n) { 
     int i =  bx * blockDim.x + tx; 
     if (i < n) { 
         C[i] = A[i] + B[i]; 
@@ -64,7 +64,7 @@ void vecAdd_gpu(float* A_h, float* B_h, float* C_h, int n) {
 
 	dim3 Grid(ceil(n/256.0), 1, 1);
 	dim3 Block(256, 1, 1);
-    vecAddKernel<<<Grid, Block>>>(A_d, B_d, C_d, n);
+    vecAdd_Kernel <<<Grid, Block>>>(A_d, B_d, C_d, n);
 
     HANDLE_ERROR(cudaMemcpy(C_h, C_d, size, cudaMemcpyDeviceToHost));
 	

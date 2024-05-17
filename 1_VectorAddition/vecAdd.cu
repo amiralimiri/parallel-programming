@@ -62,7 +62,9 @@ void vecAdd_gpu(float* A_h, float* B_h, float* C_h, int n) {
     HANDLE_ERROR(cudaMemcpy(A_d, A_h, size, cudaMemcpyHostToDevice));
     HANDLE_ERROR(cudaMemcpy(B_d, B_h, size, cudaMemcpyHostToDevice));
 
-    vecAddKernel<<< ceil(n/256.0), 256 >>>(A_d, B_d, C_d, n);
+	dim3 Grid(ceil(n/256.0), 1, 1);
+	dim3 Block(256, 1, 1);
+    vecAddKernel<<<Grid, Block>>>(A_d, B_d, C_d, n);
 
     HANDLE_ERROR(cudaMemcpy(C_h, C_d, size, cudaMemcpyDeviceToHost));
 	

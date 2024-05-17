@@ -37,7 +37,7 @@ void RGB2GRAY_kernel (unsigned char * Pout,
 
         // Perform the rescaling and store it
         // We multiply by floating point constants
-        Pout[grayOffset] = 0.21f*r + 0.71f*g + 0.07f*b;
+        Pout[grayOffset] =(unsigned char) 0.21f*r + 0.71f*g + 0.07f*b;
 
     }
 

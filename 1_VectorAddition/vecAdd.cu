@@ -41,7 +41,7 @@ void vecAdd_cpu(float* A_h, float* B_h, float* C_h, int n) {
 // Compute vector sum C = A + B 
 // Each thread performs one pair-wise addition 
 __global__ 
-void vecAdd_Kernel(float* A, float* B, float* C, int n) { 
+void vecAdd_Kernel (float* A, float* B, float* C, int n) { 
     int i =  bx * blockDim.x + tx; 
     if (i < n) { 
         C[i] = A[i] + B[i]; 

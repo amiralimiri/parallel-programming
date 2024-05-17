@@ -4,7 +4,7 @@
 
 #include "../utils/gpuerrors.h"
 
-int BLUR_SIZE = 3;
+int BLUR_SIZE = 1; // 3*3
 //-----------------------------------------------------------------------------
 
 #define bx blockIdx.x

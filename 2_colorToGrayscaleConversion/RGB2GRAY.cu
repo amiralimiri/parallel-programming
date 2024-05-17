@@ -3,7 +3,7 @@
 #include <time.h>
 
 #include "../utils/gpuerrors.h"
-
+int CHANNELS = 3;
 //-----------------------------------------------------------------------------
 
 #define bx blockIdx.x
@@ -30,7 +30,7 @@ void RGB2GRAY_kernel (unsigned char * Pout,
 
         // One can think of the RGB image having CHANNEL
         // times more columns than the gray scale image
-        int rgbOffset = grayOffset * 3;
+        int rgbOffset = grayOffset * CHANNELS;
         unsigned char r = Pin[rgbOffset + 0]; // Red value
         unsigned char g = Pin[rgbOffset + 1]; // Green value
         unsigned char b = Pin[rgbOffset + 2]; // Blue value

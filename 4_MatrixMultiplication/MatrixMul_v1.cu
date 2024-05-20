@@ -14,10 +14,7 @@
 #define tz throadIdx.z
 
 __global__
-void MatrixMul_Kernel (float* M,
-                       float* N,
-                       float* P,
-                       int Width) {
+void MatrixMul_Kernel1 (float* M, float* N, float* P, int Width) {
 
     int row = by * blockDim.y + ty;
     int col = bx * blockDim.x + tx;
